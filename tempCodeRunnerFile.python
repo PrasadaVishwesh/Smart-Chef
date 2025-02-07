@@ -1,0 +1,47 @@
+# Function to get a positive integer from the user
+def get_positive_integer(prompt):
+    while True:
+        try:
+            num = int(input(prompt))
+            if num > 0:
+                return num
+            else:
+                print("Error: Please enter a positive integer.")
+        except ValueError:
+            print("Error: Please enter a valid integer.")
+
+# Function to get unique integer elements for a set
+def get_unique_integer_elements(num_elements, set_name):
+    unique_set = set()
+    for i in range(num_elements):
+        while True:
+            try:
+                element = int(input(f"Enter integer element {i+1} for {set_name}: "))
+                if element in unique_set:
+                    print("Error: Element already exists in the set. Please enter a unique integer.")
+                else:
+                    unique_set.add(element)
+                    break
+            except ValueError:
+                print("Error: Please enter a valid integer.")
+    return unique_set
+
+# Get the number of elements in the first set
+num_elements1 = get_positive_integer("Enter the number of elements in the first set: ")
+set1 = get_unique_integer_elements(num_elements1, "set 1")
+
+# Get the number of elements in the second set
+num_elements2 = get_positive_integer("Enter the number of elements in the second set: ")
+set2 = get_unique_integer_elements(num_elements2, "set 2")
+
+# Perform set operations
+union_set = set1 | set2
+intersection_set = set1 & set2
+difference_set = set1 - set2
+
+# Print the results
+print("Set 1:", set1)
+print("Set 2:", set2)
+print("Union:", union_set)
+print("Intersection:", intersection_set)
+print("Difference (Set1 - Set2):", difference_set)  
